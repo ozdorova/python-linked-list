@@ -30,7 +30,6 @@ class DoubleLinkedList:
     
     @singledispatchmethod
     def __init__(self, value=None, *args):
-        # добавить возможность добавление сразу нескольких Node
         self.head = Node(value)
         if args:
             for item in args:
@@ -229,6 +228,7 @@ class DoubleLinkedList:
 if __name__ == "__main__":
     lst = DoubleLinkedList(1, 2, 3, 4, 5, 6)
     print(lst)
+    
 
     lst.append(5)
     lst.insert(1, -8)

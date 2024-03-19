@@ -24,10 +24,23 @@ class TestNode(unittest.TestCase):
 class TestDoubleLinkedList(unittest.TestCase):
 
     def setUp(self):
-        self.dll = double_linked_list.DoubleLinkedList(1)
-        self.dll.append(10)
-        self.dll.append(20)
-        self.dll.append(5)
+        self.dll = double_linked_list.DoubleLinkedList(1, 10, 20, 5)
+
+    def test_init(self):
+        #list
+        self.dll_1 = double_linked_list.DoubleLinkedList((23, 0, 20, 9))
+        self.assertEqual(self.dll_1[0].value, 23)
+        self.assertEqual(self.dll_1[1].value, 0)
+        self.assertEqual(self.dll_1[2].value, 20)
+        self.assertEqual(self.dll_1[3].value, 9)
+        #tuple 
+        self.dll_2 = double_linked_list.DoubleLinkedList((123, 21312, 30, -12))
+        self.assertEqual(self.dll_2[0].value, 123)
+        self.assertEqual(self.dll_2[1].value, 21312)
+        self.assertEqual(self.dll_2[2].value, 30)
+        self.assertEqual(self.dll_2[3].value, -12)
+
+
 
     def test_append(self):
         self.assertEqual(len(self.dll), 4)
