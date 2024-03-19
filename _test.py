@@ -11,6 +11,10 @@ class TestNode(unittest.TestCase):
     def test_node_creation(self):
         node = double_linked_list.Node(10)
         self.assertEqual(node.value, 10)
+        node_1 = double_linked_list.Node(10)
+        self.assertEqual(node_1, node)
+        node_2 = double_linked_list.Node(6)
+        self.assertNotEqual(node, node_2)
 
     def test_node_str_repr(self):
         node = double_linked_list.Node(10)
@@ -33,12 +37,14 @@ class TestDoubleLinkedList(unittest.TestCase):
         self.assertEqual(self.dll_1[1].value, 0)
         self.assertEqual(self.dll_1[2].value, 20)
         self.assertEqual(self.dll_1[3].value, 9)
+        self.dll_1.print()
         #tuple 
         self.dll_2 = double_linked_list.DoubleLinkedList((123, 21312, 30, -12))
         self.assertEqual(self.dll_2[0].value, 123)
         self.assertEqual(self.dll_2[1].value, 21312)
         self.assertEqual(self.dll_2[2].value, 30)
         self.assertEqual(self.dll_2[3].value, -12)
+        self.dll_2.print()
 
 
 
@@ -52,6 +58,9 @@ class TestDoubleLinkedList(unittest.TestCase):
         self.assertEqual(self.dll.index(0), 0)
 
     def test_insert(self):
+        self.dll.insert(0, -111)
+        self.assertEqual(self.dll[0].value, -111)
+        self.dll.delete(-111)
         self.dll.insert(2, 15)
         self.assertEqual(self.dll[2].value, 15)
         self.assertEqual(len(self.dll), 5)
@@ -92,6 +101,11 @@ class TestDoubleLinkedList(unittest.TestCase):
         self.dll.remove_duplicates()
         self.dll.rotate(2)
         self.assertEqual(len(self.dll), 4)
+    
+    def test_seitem(self):
+        self.dll[0] = -6
+        self.assertEqual(self.dll[0].value, -6)
+        
 
 
 if __name__ == '__main__':

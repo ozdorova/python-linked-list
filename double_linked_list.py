@@ -166,7 +166,7 @@ class DoubleLinkedList:
         "Удаление элемента списка по значению"
         current = self.head
         while current:
-            if current.data == value:
+            if current.value == value:
                 if current.prev:
                     current.prev.next = current.next
                 else:
