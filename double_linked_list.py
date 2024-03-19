@@ -29,9 +29,12 @@ class DoubleLinkedList:
     __slots__ = ('head',)
     
     @singledispatchmethod
-    def __init__(self, value=None):
+    def __init__(self, value=None, *args):
         # добавить возможность добавление сразу нескольких Node
         self.head = Node(value)
+        if args:
+            for item in args:
+                self.append(item)
     
     @__init__.register
     def _(self, array: list | tuple):
@@ -39,11 +42,6 @@ class DoubleLinkedList:
         for item in array[1:]:
             self.append(item)
     
-    # @__init__.register
-    # def _(self, *args):
-    #     self.head = Node(args[0])
-    #     for item in args[1:]:
-    #         self.append(item)
 
     def __iter__(self):
         yield from self._node_generator()
