@@ -1,6 +1,6 @@
 import time
 from typing import Any
-
+from functools import singledispatchmethod
 
 class Node:
     __slots__ = ('value', 'next', 'prev')
@@ -27,10 +27,23 @@ class Node:
 
 class DoubleLinkedList:
     __slots__ = ('head',)
-
+    
+    @singledispatchmethod
     def __init__(self, value=None):
         # добавить возможность добавление сразу нескольких Node
         self.head = Node(value)
+    
+    @__init__.register
+    def _(self, array: list | tuple):
+        self.head = Node(array[0])
+        for item in array[1:]:
+            self.append(item)
+    
+    # @__init__.register
+    # def _(self, *args):
+    #     self.head = Node(args[0])
+    #     for item in args[1:]:
+    #         self.append(item)
 
     def __iter__(self):
         yield from self._node_generator()
@@ -216,7 +229,8 @@ class DoubleLinkedList:
 
 
 if __name__ == "__main__":
-    lst = DoubleLinkedList(1)
+    lst = DoubleLinkedList(1, 2, 3, 4, 5, 6)
+    print(lst)
 
     lst.append(5)
     lst.insert(1, -8)
@@ -225,6 +239,6 @@ if __name__ == "__main__":
     lst.insert(2, 155)
     lst.append_left(0)
     lst.append(2)
-    
+    print(lst)
 
 
