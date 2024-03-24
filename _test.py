@@ -1,4 +1,4 @@
-import double_linked_list
+from double_linked_list import DoubleLinkedList
 import unittest
 
 # coverage run _test.py 
@@ -9,15 +9,15 @@ import unittest
 class TestNode(unittest.TestCase):
 
     def test_node_creation(self):
-        node = double_linked_list.Node(10)
+        node = DoubleLinkedList.Node(10)
         self.assertEqual(node.value, 10)
-        node_1 = double_linked_list.Node(10)
+        node_1 = DoubleLinkedList.Node(10)
         self.assertEqual(node_1, node)
-        node_2 = double_linked_list.Node(6)
+        node_2 = DoubleLinkedList.Node(6)
         self.assertNotEqual(node, node_2)
 
     def test_node_str_repr(self):
-        node = double_linked_list.Node(10)
+        node = DoubleLinkedList.Node(10)
         expected_str = "10"
         self.assertEqual(str(node), expected_str)
 
@@ -28,18 +28,18 @@ class TestNode(unittest.TestCase):
 class TestDoubleLinkedList(unittest.TestCase):
 
     def setUp(self):
-        self.dll = double_linked_list.DoubleLinkedList(1, 10, 20, 5)
+        self.dll = DoubleLinkedList(1, 10, 20, 5)
 
     def test_init(self):
         #list
-        self.dll_1 = double_linked_list.DoubleLinkedList((23, 0, 20, 9))
+        self.dll_1 = DoubleLinkedList((23, 0, 20, 9))
         self.assertEqual(self.dll_1[0].value, 23)
         self.assertEqual(self.dll_1[1].value, 0)
         self.assertEqual(self.dll_1[2].value, 20)
         self.assertEqual(self.dll_1[3].value, 9)
         self.dll_1.print()
         #tuple 
-        self.dll_2 = double_linked_list.DoubleLinkedList((123, 21312, 30, -12))
+        self.dll_2 = DoubleLinkedList((123, 21312, 30, -12))
         self.assertEqual(self.dll_2[0].value, 123)
         self.assertEqual(self.dll_2[1].value, 21312)
         self.assertEqual(self.dll_2[2].value, 30)

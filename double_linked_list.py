@@ -2,42 +2,64 @@ import time
 from typing import Any
 from functools import singledispatchmethod
 
-class Node:
-    __slots__ = ('value', 'next', 'prev')
+# class Node:
+#     __slots__ = ('value', 'next', 'prev')
 
-    def __init__(self, value: Any):
-        self.value = value
-        self.next = None
-        self.prev = None
+#     def __init__(self, value: Any):
+#         self.value = value
+#         self.next = None
+#         self.prev = None
 
-    def __str__(self):
-        return str(self.value)
+#     def __str__(self):
+#         return str(self.value)
 
-    def __repr__(self):
-        return f"{self.__class__.__name__}({str(self.value)})"
+#     def __repr__(self):
+#         return f"{self.__class__.__name__}({str(self.value)})"
 
-    def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            return self.value == other.value
-        return NotImplemented
+#     def __eq__(self, other):
+#         if isinstance(other, self.__class__):
+#             return self.value == other.value
+#         return NotImplemented
 
-    def __ne__(self, other):
-        return not self.__eq__(other)
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
 
 
 class DoubleLinkedList:
     __slots__ = ('head',)
     
+    class Node:
+        __slots__ = ('value', 'next', 'prev')
+
+        def __init__(self, value: Any):
+            self.value = value
+            self.next = None
+            self.prev = None
+
+        def __str__(self):
+            return str(self.value)
+
+        def __repr__(self):
+            return f"{self.__class__.__name__}({str(self.value)})"
+
+        def __eq__(self, other):
+            if isinstance(other, self.__class__):
+                return self.value == other.value
+            return NotImplemented
+
+        def __ne__(self, other):
+            return not self.__eq__(other)
+    
     @singledispatchmethod
     def __init__(self, value=None, *args):
-        self.head = Node(value)
+        self.head = self.Node(value)
         if args:
             for item in args:
                 self.append(item)
     
     @__init__.register
     def _(self, array: list | tuple):
-        self.head = Node(array[0])
+        self.head = self.Node(array[0])
         for item in array[1:]:
             self.append(item)
     
@@ -96,7 +118,7 @@ class DoubleLinkedList:
 
     def append(self, value: Any) -> None:
         """Добавление объекта Node в конец списка"""
-        new_node = Node(value)
+        new_node = self.Node(value)
         if not self.head:
             self.head = new_node
             return
@@ -109,7 +131,7 @@ class DoubleLinkedList:
 
     def append_left(self, data) -> None:
         """Добавление объекта Node в начало списка"""
-        new_node = Node(data)
+        new_node = self.Node(data)
         if self.head:
             self.head.prev = new_node
             new_node.next = self.head
@@ -117,7 +139,7 @@ class DoubleLinkedList:
 
     def insert(self, position: int, value: Any) -> None:
         """Добавление объекта Node в указанную позицию"""
-        new_node = Node(value)
+        new_node = self.Node(value)
         if position == 0:
             self.append_left(value)
             return
