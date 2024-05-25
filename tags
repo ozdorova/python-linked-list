@@ -1,0 +1,66 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Any	double_linked_list.py	/^from typing import Any$/;"	i
+Any	main.py	/^from typing import Any$/;"	i
+DoubleLinkedList	_test.py	/^from double_linked_list import DoubleLinkedList$/;"	i
+DoubleLinkedList	double_linked_list.py	/^class DoubleLinkedList:$/;"	c
+LinkedList	main.py	/^class LinkedList:$/;"	c
+Node	double_linked_list.py	/^    class Node:$/;"	c	class:DoubleLinkedList
+Node	main.py	/^class Node:$/;"	c
+TestDoubleLinkedList	_test.py	/^class TestDoubleLinkedList(unittest.TestCase):$/;"	c
+TestNode	_test.py	/^class TestNode(unittest.TestCase):$/;"	c
+_	double_linked_list.py	/^    def _(self, array: list | tuple):$/;"	m	class:DoubleLinkedList
+__delitem__	double_linked_list.py	/^    def __delitem__(self, key: int) -> None:$/;"	m	class:DoubleLinkedList	file:
+__eq__	double_linked_list.py	/^        def __eq__(self, other):$/;"	m	class:DoubleLinkedList.Node	file:
+__getitem__	double_linked_list.py	/^    def __getitem__(self, key: int) -> Node:$/;"	m	class:DoubleLinkedList	file:
+__init__	double_linked_list.py	/^        def __init__(self, value: Any):$/;"	m	class:DoubleLinkedList.Node
+__init__	double_linked_list.py	/^    def __init__(self, *args):$/;"	m	class:DoubleLinkedList
+__init__	main.py	/^    def __init__(self, value: Any):$/;"	m	class:Node
+__init__	main.py	/^    def __init__(self, value=None):$/;"	m	class:LinkedList
+__iter__	double_linked_list.py	/^    def __iter__(self):$/;"	m	class:DoubleLinkedList	file:
+__len__	double_linked_list.py	/^    def __len__(self) -> int:$/;"	m	class:DoubleLinkedList	file:
+__ne__	double_linked_list.py	/^        def __ne__(self, other):$/;"	m	class:DoubleLinkedList.Node	file:
+__repr__	double_linked_list.py	/^        def __repr__(self):$/;"	m	class:DoubleLinkedList.Node	file:
+__repr__	double_linked_list.py	/^    def __repr__(self) -> str:$/;"	m	class:DoubleLinkedList	file:
+__repr__	main.py	/^    def __repr__(self):$/;"	m	class:Node	file:
+__setitem__	double_linked_list.py	/^    def __setitem__(self, key: int, value: Any) -> None:$/;"	m	class:DoubleLinkedList	file:
+__slots__	double_linked_list.py	/^        __slots__ = ('value', 'next', 'prev')$/;"	v	class:DoubleLinkedList.Node
+__slots__	double_linked_list.py	/^    __slots__ = ('head',)$/;"	v	class:DoubleLinkedList
+__slots__	main.py	/^    __slots__ = ('value', 'next',)$/;"	v	class:Node
+__str__	double_linked_list.py	/^        def __str__(self):$/;"	m	class:DoubleLinkedList.Node	file:
+__str__	double_linked_list.py	/^    def __str__(self) -> str:$/;"	m	class:DoubleLinkedList	file:
+_node_generator	double_linked_list.py	/^    def _node_generator(self, value_return=True):$/;"	m	class:DoubleLinkedList
+append	double_linked_list.py	/^    def append(self, value: Any) -> None:$/;"	m	class:DoubleLinkedList
+append	main.py	/^    def append(self, value: Any):$/;"	m	class:LinkedList
+append_left	double_linked_list.py	/^    def append_left(self, value: Any) -> None:$/;"	m	class:DoubleLinkedList
+delete	double_linked_list.py	/^    def delete(self, value) -> None:$/;"	m	class:DoubleLinkedList
+delete	main.py	/^    def delete(self, value: Any):$/;"	m	class:LinkedList
+index	double_linked_list.py	/^    def index(self, value: Any) -> int:$/;"	m	class:DoubleLinkedList
+insert	double_linked_list.py	/^    def insert(self, key: int, value: Any) -> None:$/;"	m	class:DoubleLinkedList
+insert	main.py	/^    def insert(self, position: int, value: Any):$/;"	m	class:LinkedList
+lst	double_linked_list.py	/^    lst = DoubleLinkedList(1, 2, 3, 4, 5, 6)$/;"	v	class:DoubleLinkedList
+lst	main.py	/^lst = LinkedList(1)$/;"	v
+print	double_linked_list.py	/^    def print(self) -> None:$/;"	m	class:DoubleLinkedList
+print	main.py	/^    def print(self):$/;"	m	class:LinkedList
+remove_duplicates	double_linked_list.py	/^    def remove_duplicates(self) -> None:$/;"	m	class:DoubleLinkedList
+reverse_list	double_linked_list.py	/^    def reverse_list(self) -> None:$/;"	m	class:DoubleLinkedList
+rotate	double_linked_list.py	/^    def rotate(self, k: int) -> None:$/;"	m	class:DoubleLinkedList
+setUp	_test.py	/^    def setUp(self):$/;"	m	class:TestDoubleLinkedList
+singledispatchmethod	double_linked_list.py	/^from functools import singledispatchmethod$/;"	i
+sort	double_linked_list.py	/^    def sort(self) -> None:$/;"	m	class:DoubleLinkedList
+test_append	_test.py	/^    def test_append(self):$/;"	m	class:TestDoubleLinkedList
+test_append_left	_test.py	/^    def test_append_left(self):$/;"	m	class:TestDoubleLinkedList
+test_init	_test.py	/^    def test_init(self):$/;"	m	class:TestDoubleLinkedList
+test_insert	_test.py	/^    def test_insert(self):$/;"	m	class:TestDoubleLinkedList
+test_node_creation	_test.py	/^    def test_node_creation(self):$/;"	m	class:TestNode
+test_node_str_repr	_test.py	/^    def test_node_str_repr(self):$/;"	m	class:TestNode
+test_remove_duplicates	_test.py	/^    def test_remove_duplicates(self):$/;"	m	class:TestDoubleLinkedList
+test_reverse_list	_test.py	/^    def test_reverse_list(self):$/;"	m	class:TestDoubleLinkedList
+test_rotate	_test.py	/^    def test_rotate(self):$/;"	m	class:TestDoubleLinkedList
+test_seitem	_test.py	/^    def test_seitem(self):$/;"	m	class:TestDoubleLinkedList
+test_sort	_test.py	/^    def test_sort(self):$/;"	m	class:TestDoubleLinkedList
+unittest	_test.py	/^import unittest$/;"	i

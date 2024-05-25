@@ -1,33 +1,10 @@
-import time
-from typing import Any
 from functools import singledispatchmethod
-
-# class Node:
-#     __slots__ = ('value', 'next', 'prev')
-
-#     def __init__(self, value: Any):
-#         self.value = value
-#         self.next = None
-#         self.prev = None
-
-#     def __str__(self):
-#         return str(self.value)
-
-#     def __repr__(self):
-#         return f"{self.__class__.__name__}({str(self.value)})"
-
-#     def __eq__(self, other):
-#         if isinstance(other, self.__class__):
-#             return self.value == other.value
-#         return NotImplemented
-
-#     def __ne__(self, other):
-#         return not self.__eq__(other)
+from typing import Any
 
 
 class DoubleLinkedList:
     __slots__ = ('head',)
-    
+
     class Node:
         __slots__ = ('value', 'next', 'prev')
 
@@ -49,20 +26,19 @@ class DoubleLinkedList:
 
         def __ne__(self, other):
             return not self.__eq__(other)
-    
+
     @singledispatchmethod
-    def __init__(self, value=None, *args):
-        self.head = self.Node(value)
+    def __init__(self, *args):
+        self.head = None
         if args:
             for item in args:
                 self.append(item)
-    
+
     @__init__.register
     def _(self, array: list | tuple):
         self.head = self.Node(array[0])
         for item in array[1:]:
             self.append(item)
-    
 
     def __iter__(self):
         yield from self._node_generator()
@@ -78,7 +54,8 @@ class DoubleLinkedList:
 
     def __repr__(self) -> str:
         node_name = self.head.__class__.__name__
-        return f"{self.__class__.__name__}[{', '.join( (f'{node_name}({n})' for n in self))}]"
+        return f"{self.__class__.__name__} \
+        [{', '.join((f'{node_name}({n})' for n in self))}]"
 
     def __len__(self) -> int:
         current = self.head
@@ -88,12 +65,12 @@ class DoubleLinkedList:
             current = current.next
         return length
 
-    def __getitem__(self, item: int) -> Node:
+    def __getitem__(self, key: int) -> Node:
         """Вовзращает объект Node"""
-        if item < 0:
-            item = len(self) + item
+        if key < 0:
+            key = len(self) + key
         for i, v in enumerate(self._node_generator(value_return=False)):
-            if i == item:
+            if i == key:
                 return v
         raise IndexError("Index out of range")
 
@@ -106,8 +83,17 @@ class DoubleLinkedList:
             current = current.next
         raise IndexError("Index out of range")
 
-    def __delitem__(self, key):
-        pass
+    def __delitem__(self, key: int) -> None:
+        """Удаление значение по индексу"""
+        if key < 0:
+            key = len(self) + key
+        if key == 0:
+            self.head = self.head.next
+            return
+        current = self.head
+        for _ in range(key - 1):
+            current = current.next
+        current.next = current.next.next
 
     def index(self, value: Any) -> int:
         """Возвращает индекс объекта Node"""
@@ -129,24 +115,24 @@ class DoubleLinkedList:
         current.next = new_node
         new_node.prev = current
 
-    def append_left(self, data) -> None:
+    def append_left(self, value: Any) -> None:
         """Добавление объекта Node в начало списка"""
-        new_node = self.Node(data)
+        new_node = self.Node(value)
         if self.head:
             self.head.prev = new_node
             new_node.next = self.head
         self.head = new_node
 
-    def insert(self, position: int, value: Any) -> None:
-        """Добавление объекта Node в указанную позицию"""
+    def insert(self, key: int, value: Any) -> None:
+        """Добавление объекта Node по индексу"""
         new_node = self.Node(value)
-        if position == 0:
+        if key == 0:
             self.append_left(value)
             return
 
         current = self.head
         count = 0
-        while current and count < position:
+        while current and count < key:
             current = current.next
             count += 1
 
@@ -217,7 +203,7 @@ class DoubleLinkedList:
             current = current.next
 
     def rotate(self, k: int) -> None:
-        """Поворот списка на определенное количество шаго как в deque"""
+        """Ротация списка на определенное количество шаго как в deque"""
         if not self.head or not self.head.next:
             return
 
@@ -227,7 +213,7 @@ class DoubleLinkedList:
             current = current.next
             length += 1
 
-        k = k % length  # Нормализуем k, если он больше длины списка
+        k = k % length
 
         if k == 0:
             return
@@ -250,7 +236,6 @@ class DoubleLinkedList:
 if __name__ == "__main__":
     lst = DoubleLinkedList(1, 2, 3, 4, 5, 6)
     print(lst)
-    
 
     lst.append(5)
     lst.insert(1, -8)
@@ -260,5 +245,3 @@ if __name__ == "__main__":
     lst.append_left(0)
     lst.append(2)
     print(lst)
-
-

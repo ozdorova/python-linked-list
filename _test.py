@@ -1,8 +1,9 @@
-from double_linked_list import DoubleLinkedList
 import unittest
 
-# coverage run _test.py 
-# coverage report 
+from double_linked_list import DoubleLinkedList
+
+# coverage run _test.py
+# coverage report
 # coverage html or coverage xml
 
 
@@ -31,22 +32,20 @@ class TestDoubleLinkedList(unittest.TestCase):
         self.dll = DoubleLinkedList(1, 10, 20, 5)
 
     def test_init(self):
-        #list
+        # list
         self.dll_1 = DoubleLinkedList((23, 0, 20, 9))
         self.assertEqual(self.dll_1[0].value, 23)
         self.assertEqual(self.dll_1[1].value, 0)
         self.assertEqual(self.dll_1[2].value, 20)
         self.assertEqual(self.dll_1[3].value, 9)
         self.dll_1.print()
-        #tuple 
+        # tuple
         self.dll_2 = DoubleLinkedList((123, 21312, 30, -12))
         self.assertEqual(self.dll_2[0].value, 123)
         self.assertEqual(self.dll_2[1].value, 21312)
         self.assertEqual(self.dll_2[2].value, 30)
         self.assertEqual(self.dll_2[3].value, -12)
         self.dll_2.print()
-
-
 
     def test_append(self):
         self.assertEqual(len(self.dll), 4)
@@ -101,13 +100,11 @@ class TestDoubleLinkedList(unittest.TestCase):
         self.dll.remove_duplicates()
         self.dll.rotate(2)
         self.assertEqual(len(self.dll), 4)
-    
+
     def test_seitem(self):
         self.dll[0] = -6
         self.assertEqual(self.dll[0].value, -6)
-        
 
 
 if __name__ == '__main__':
     unittest.main()
-
