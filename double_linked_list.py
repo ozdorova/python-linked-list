@@ -3,15 +3,39 @@ from typing import Any
 
 
 class DoubleLinkedList:
-    __slots__ = ('head',)
+    __slots__ = ('_head',)
 
     class Node:
-        __slots__ = ('value', 'next', 'prev')
+        __slots__ = ('_value', '_next', '_prev')
 
         def __init__(self, value: Any):
-            self.value = value
-            self.next = None
-            self.prev = None
+            self._value = value
+            self._next = None
+            self._prev = None
+
+        @property
+        def value(self):
+            return self._value
+
+        @value.setter
+        def value(self, value: Any):
+            self._value = value
+
+        @property
+        def next(self):
+            return self._next
+
+        @next.setter
+        def next(self, next_node: 'DoubleLinkedList.Node'):
+            self._next = next_node
+
+        @property
+        def prev(self):
+            return self._prev
+
+        @prev.setter
+        def prev(self, prev_node: 'DoubleLinkedList.Node'):
+            self._prev = prev_node
 
         def __str__(self):
             return str(self.value)
@@ -28,17 +52,25 @@ class DoubleLinkedList:
             return not self.__eq__(other)
 
     @singledispatchmethod
-    def __init__(self, *args):
-        self.head = None
+    def __init__(self, *args, ):
+        self._head = None
         if args:
             for item in args:
                 self.append(item)
 
     @__init__.register
     def _(self, array: list | tuple):
-        self.head = self.Node(array[0])
+        self._head = self.Node(array[0])
         for item in array[1:]:
             self.append(item)
+
+    @property
+    def head(self):
+        return self._head
+
+    @head.setter
+    def head(self, head: 'DoubleLinkedList.Node'):
+        self._head = head
 
     def __iter__(self):
         yield from self._node_generator()
